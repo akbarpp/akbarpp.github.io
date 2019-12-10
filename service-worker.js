@@ -24,7 +24,7 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
-    new RegExp('http://api.football-data.org/v2/'),
+    new RegExp('https://api.football-data.org/v2/'),
     workbox.strategies.staleWhileRevalidate()
 );
 
