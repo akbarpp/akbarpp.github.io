@@ -289,7 +289,7 @@ function getTeamFavById(id) {
                                     <td>${data.name}</td>
                                     <td>${data.venue}</td>
                                     <td>
-                                        <a href="./pages/detail.html?id=${data.id}" class="waves-effect waves-light" title="view ${data.name} detail"><i class="material-icons">info_outline</i></a>
+                                        <a href="./detail.html?id=${data.id}" class="waves-effect waves-light" title="view ${data.name} detail"><i class="material-icons">info_outline</i></a>
                                         <a href="?delFavoriteTeamId=${team.id}" class="waves-effect waves-light red-text" title="delete ${data.name} from favorite"><i class="material-icons">close</i></a>
                                     </td>
                                 </tr>`
@@ -309,7 +309,7 @@ function getTeamFavById(id) {
                         <td>${data.name}</td>
                         <td>${data.venue}</td>
                         <td>
-                            <a href="./pages/detail.html?id=${data.id}" class="waves-effect waves-light" title="view ${data.name} detail"><i class="material-icons">info_outline</i></a>
+                            <a href="./detail.html?id=${data.id}" class="waves-effect waves-light" title="view ${data.name} detail"><i class="material-icons">info_outline</i></a>
                             <a href="?delFavoriteTeamId=${data.id}" class="waves-effect waves-light red-text" title="delete ${data.name} from favorite"><i class="material-icons">close</i></a>
                         </td>
                     </tr>`
