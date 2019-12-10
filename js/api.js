@@ -1,4 +1,4 @@
-var base_url = "http://api.football-data.org/v2/";
+var base_url = "https://api.football-data.org/v2/";
 const API_KEY = '614785d87df74e6bab9dcad92ef326b9';
 
 function status(response) {
