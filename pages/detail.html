@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Premiere League</title>
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#37003c" />
+    <link rel="icon" type="image/png" href="../logo.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../css/materialize.min.css">
+</head>
+
+<body>
+    <!-- Navigasi -->
+    <nav role="navigation" style="background:#37003c;">
+        <div class="nav-wrapper container">
+            <span class="brand-logo blue-text" id="logo-container"></span>
+            <a href="/"><i class="material-icons">arrow_back</i></a>
+
+            <ul class="topnav right hide-on-med-and-down"></ul>
+            <ul class="sidenav" id="nav-mobile"></ul>
+        </div>
+    </nav>
+    <!-- Akhir Navigasi -->
+    <div id="body-content">
+        <div class="container">
+            <div class="row valign-wrapper">
+                <div class="col m2">
+                    <img src="" id="logo" height="100" style="margin-top:auto">
+                </div>
+                <div class="col m10">
+                    <h4 id="name"></h4>
+                    <p id="venue"></p>
+                    <p id="website"></p>
+                </div>
+            </div>
+            <ul id="tabs-swipe-demo" class="tabs row">
+                <li class="tab col s6"><a class="active" href="#overview" style="color:#37003c;">Overview</a></li>
+                <li class="tab col s6"><a class="" href="#team" style="color:#37003c;">Squad</a></li>
+            </ul>
+            <div id="overview" class="col">
+                <div class="row">
+                    <div class="col m6 s12">
+                        <div>
+                            <h5 id="active"><strong>Active Competitions</strong></h5>
+                            <ul class="collection with-header" id="competition"></ul>
+                        </div>
+                        <div>
+                            <h5><strong>Lates Matches</strong></h5>
+                            <ul class="collection with-header" id="latesMatches"></ul>
+                        </div>
+                    </div>
+                    <div class="col m6 s12">
+                        <h5><strong>Upcoming Matches</strong></h5>
+                        <ul class="collection with-header" id="upcomingMatches"></ul>
+                    </div>
+                </div>
+            </div>
+            <div id="team" class="col">
+                <table class="highlight striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Date of Birth</th>
+                            <th>Nationality</th>
+                            <th>Position</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="squad">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="../js/materialize.min.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/idb.js"></script>
+    <script src="../js/actions.js"></script>
+    <script>
+        // REGISTER SERVICE WORKER
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", function () {
+                navigator.serviceWorker
+                    .register("/service-worker.js")
+                    .then(function () {
+                        console.log("Pendaftaran ServiceWorker berhasil");
+                    })
+                    .catch(function () {
+                        console.log("Pendaftaran ServiceWorker gagal");
+                    });
+            });
+        } else {
+            console.log("ServiceWorker belum didukung browser ini.");
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var elems = document.querySelectorAll(".tabs");
+            M.Tabs.init(elems);
+
+            getTeamById();
+            getTeamUpcomingMatches();
+            getTeamLatesMatches();
+        });
+    </script>
+</body>
+
+</html>
